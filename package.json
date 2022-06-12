@@ -16,9 +16,12 @@
     "@fontsource/roboto": "^4.5.7",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
+    "i18next": "^21.8.9",
+    "i18next-browser-languagedetector": "^6.1.4",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-i18next": "^11.17.1",
     "sass": "^1.52.3"
   },
   "devDependencies": {
