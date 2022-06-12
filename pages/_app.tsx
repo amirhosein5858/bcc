@@ -6,6 +6,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ThemeDark } from "../styles/themes/theme.dark";
 import { ThemeLight } from "../styles/themes/theme.light";
 import "../styles/globals.css";
+import '../i18n/i18n';
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }

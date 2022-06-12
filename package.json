@@ -16,6 +16,7 @@
     "@fontsource/roboto": "^4.5.7",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
+    "@reduxjs/toolkit": "^1.8.2",
     "i18next": "^21.8.9",
     "i18next-browser-languagedetector": "^6.1.4",
     "next": "12.1.6",
