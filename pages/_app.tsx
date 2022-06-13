@@ -6,9 +6,10 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ThemeDark } from "../styles/themes/theme.dark";
 import { ThemeLight } from "../styles/themes/theme.light";
 import { store } from '../redux/store'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import "../styles/globals.css";
 import '../i18n/i18n';
+import { GetCurrentTheme } from "../redux/selectors/theme.selectors";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -16,9 +17,10 @@ interface MyAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 function App({ Component, pageProps, emotionCache = clientSideEmotionCache }: MyAppProps) {
+  const theme = useSelector(GetCurrentTheme)
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={ThemeDark}>
+      <ThemeProvider theme={theme == 'dark' ? ThemeDark : ThemeLight}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
