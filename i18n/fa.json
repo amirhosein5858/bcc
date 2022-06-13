@@ -1,4 +1,16 @@
 {
     "home": "خانه",
-    "user_setting": "تنظیمات کاربری"
+    "user_setting": "تنظیمات کاربری",
+    "communication_routes":"مسیرهای ارتباطی",
+    "add_route":"افزودن مسیر ارتباطی",
+    "connection_base":"بستر ارتباطی",
+    "twitter":"توییتر",
+    "instagram":"اینستاگرام",
+    "facebook":"فیسبوک",
+    "telegram":"تلگرام",
+    "linkedin":"لینکدین", 
+    "website":"وبسایت",
+    "email":"ایمیل",
+    "phone":"تلفن",
+    "write_here":"اینجا بنویسید ..."
 }

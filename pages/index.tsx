@@ -4,33 +4,41 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Container, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Paper } from "@mui/material";
 import { GetCurrentTheme } from "../redux/selectors/theme.selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../redux/features/theme.slice";
 import { ToggleTheme } from "../components/themeToggle";
+import AddIcon from '@mui/icons-material/Add';
+import { SocialForm } from "../components/socialForm";
 
 const Home: NextPage = () => {
   const { t, i18n } = useTranslation();
-  const themeState = useSelector(GetCurrentTheme)
-  const dispatch = useDispatch()
+  const themeState = useSelector(GetCurrentTheme);
+  const dispatch = useDispatch();
   const theme = useTheme();
-
+  const [currentLang , setCurrentLang] = useState("")
+  const [showForm , setShowForm] = useState(false)
+  
+  
   useEffect(() => {
     document.body.dir = i18n.dir();
+    const curentLang = i18n.language;
+    setCurrentLang(curentLang)
   }, []);
 
   const changeLanguage = (lng: "en" | "fa") => {
     i18n.changeLanguage(lng);
+    setCurrentLang(lng)
     document.body.dir = i18n.dir();
     theme.direction = i18n.dir();
   };
 
   const switchTheme = () => {
-    dispatch(setTheme(themeState == 'dark' ? 'light' : 'dark'))
-  }
+    dispatch(setTheme(themeState == "dark" ? "light" : "dark"));
+  };
 
   return (
     <Container
@@ -38,7 +46,6 @@ const Home: NextPage = () => {
       maxWidth="md"
     >
       <div className={styles.pageContainer}>
-
         {/* head part */}
         <Box
           sx={{
@@ -59,7 +66,7 @@ const Home: NextPage = () => {
             <Button
               onClick={() => changeLanguage("en")}
               size="medium"
-              color="primary"
+              color={currentLang == 'en' ? 'warning':'inherit'}
               variant="text"
             >
               English
@@ -67,15 +74,36 @@ const Home: NextPage = () => {
             <Button
               onClick={() => changeLanguage("fa")}
               size="medium"
-              color="primary"
+              color={currentLang == 'fa' ? 'warning':'inherit'}
               variant="text"
             >
               فارسی
             </Button>
-            <ToggleTheme checked={themeState == 'dark'} onChange={switchTheme} />
+            <ToggleTheme
+              checked={themeState == "dark"}
+              onChange={switchTheme}
+            />
           </Box>
-          {/* head part end */}
         </Box>
+        {/* head part end */}
+
+        {/* body part */}
+        <Paper square={false} sx={{marginTop: '48px' , padding: '24px', borderRadius: '16px' , display: 'flex',flexDirection: 'column' , alignItems: 'flex-start'}}>
+          <Typography variant='caption'>{t("communication_routes")}</Typography>
+          <Button
+              onClick={() => setShowForm(!showForm)}
+              size="small"
+              color='warning'
+              variant="text"
+              sx={{marginTop: '16px'}}
+            >
+              <AddIcon fontSize="small" sx={{margin: '5px'}} />
+              {t('add_route')}
+            </Button>
+
+            <SocialForm isOpen={showForm}/>
+        </Paper>
+        {/* body part end */}
       </div>
     </Container>
   );

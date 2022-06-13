@@ -1,4 +1,16 @@
 {
     "home": "Home",
-    "user_setting": "User Setting"
+    "user_setting": "User Setting",
+    "communication_routes":"Communication routes",
+    "add_route":"Add Social",
+    "connection_base":"type",
+    "twitter":"Twitter",
+    "instagram":"Instagram",
+    "facebook":"Facebook",
+    "telegram":"Telegram",
+    "linkedin":"Linkedin", 
+    "website":"Website",
+    "email":"E-mail",
+    "phone":"Phone",
+    "write_here":"write here..."
 }
