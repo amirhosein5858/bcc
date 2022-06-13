@@ -13,6 +13,7 @@ import { setTheme } from "../redux/features/theme.slice";
 import { ToggleTheme } from "../components/themeToggle";
 import AddIcon from '@mui/icons-material/Add';
 import { SocialForm } from "../components/socialForm";
+import { GetSocials } from "../services/social.service";
 
 const Home: NextPage = () => {
   const { t, i18n } = useTranslation();
@@ -21,7 +22,21 @@ const Home: NextPage = () => {
   const theme = useTheme();
   const [currentLang , setCurrentLang] = useState("")
   const [showForm , setShowForm] = useState(false)
+  const [socials , setSocials] = useState([])
   
+  useEffect(()=> {
+    // loadSocials()
+  },[])
+
+
+  const loadSocials = () => {
+    GetSocials().then(r => {
+      console.log(r.data)
+      setSocials(r.data)
+    }).catch(e=>{
+      console.log(e)
+    })
+  }
   
   useEffect(() => {
     document.body.dir = i18n.dir();
@@ -101,7 +116,7 @@ const Home: NextPage = () => {
               {t('add_route')}
             </Button>
 
-            <SocialForm isOpen={showForm}/>
+            <SocialForm isOpen={showForm} close={()=> setShowForm(false)}/>
         </Paper>
         {/* body part end */}
       </div>
