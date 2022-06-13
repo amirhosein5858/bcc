@@ -12,5 +12,8 @@
     "website":"Website",
     "email":"E-mail",
     "phone":"Phone",
-    "write_here":"write here..."
+    "write_here":"write here...",
+    "must_be_url":"value must be a valid url",
+    "field_required":"this field is required!",
+    "link":"Link"
 }
